@@ -13,6 +13,10 @@ class User(db.Model):
         self.id = _id
         self.password = password
 
+    def saveToDb(self):
+        db.session.add(self)
+        db.session.commit()
+
     @classmethod
     def findByUsername(cls, name):
         return cls.query.filter_by(username=name).first()
