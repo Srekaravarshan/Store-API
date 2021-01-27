@@ -5,10 +5,10 @@ from resources.user import RegisterUser
 from flask_jwt import JWT
 from resources.item import Item, Items
 from resources.store import Store, StoreList
-
+import os
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'sqlite:///data.db')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.secret_key = 'Srekaravarshan'
 api = Api(app)
