@@ -32,10 +32,7 @@ class Item(Resource):
         data = Item.parser.parse_args()
         item = ItemModel(name, **data)
 
-        try:
-            item.saveToDb()
-        except:
-            return {'message': 'error occoured on inserting item'}, 500
+        item.saveToDb()
         
         return item.json(), 201
 
